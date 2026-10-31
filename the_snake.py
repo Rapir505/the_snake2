@@ -107,10 +107,11 @@ class Snake(GameObject):
         """Отрисовывает змейку на экране, затирая след."""
         # Затираем след (последний сегмент)
         if len(self.positions) > 1:
-            # Берем предпоследний элемент, так как последний уже может быть новой головой
+            # Берем предпоследний элемент, так как последний уже может быть
+            # новой головой.
             # Но проще затереть тот, который был удален.
-            # В данной реализации move() удаляет хвост, поэтому нам нужно затирать
-            # позицию, которой больше нет в списке.
+            # В данной реализации move() удаляет хвост, поэтому нам нужно
+            # затирать позицию, которой больше нет в списке.
             # Для простоты затираем весь экран перед отрисовкой (см. main),
             # либо храним предыдущую позицию хвоста.
             pass
@@ -141,13 +142,25 @@ def handle_keys(snake):
             pygame.quit()
             quit()
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP and snake.direction != (0, snake.cell_size):
+            if (
+                event.key == pygame.K_UP
+                and snake.direction != (0, snake.cell_size)
+            ):
                 snake.next_direction = (0, -snake.cell_size)
-            elif event.key == pygame.K_DOWN and snake.direction != (0, -snake.cell_size):
+            elif (
+                event.key == pygame.K_DOWN
+                and snake.direction != (0, -snake.cell_size)
+            ):
                 snake.next_direction = (0, snake.cell_size)
-            elif event.key == pygame.K_LEFT and snake.direction != (snake.cell_size, 0):
+            elif (
+                event.key == pygame.K_LEFT
+                and snake.direction != (snake.cell_size, 0)
+            ):
                 snake.next_direction = (-snake.cell_size, 0)
-            elif event.key == pygame.K_RIGHT and snake.direction != (-snake.cell_size, 0):
+            elif (
+                event.key == pygame.K_RIGHT
+                and snake.direction != (-snake.cell_size, 0)
+            ):
                 snake.next_direction = (snake.cell_size, 0)
 
 
@@ -193,6 +206,9 @@ def main():
         pygame.display.update()
         clock.tick(20)
 
+
+if __name__ == '__main__':
+    main()
 
 if __name__ == '__main__':
     main()
