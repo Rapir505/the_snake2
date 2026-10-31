@@ -1,4 +1,5 @@
-from random import choice, randint
+import pygame
+from random import randint
 
 
 class GameObject:
