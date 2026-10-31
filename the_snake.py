@@ -1,5 +1,4 @@
-import pygame
-import random
+from random import choice, randint
 
 
 class GameObject:
@@ -38,8 +37,8 @@ class Apple(GameObject):
         max_y = (self.screen_height // self.cell_size) - 1
 
         # Генерируем случайные координаты в ячейках и переводим в пиксели
-        x = random.randint(0, max_x) * self.cell_size
-        y = random.randint(0, max_y) * self.cell_size
+        x = randint(0, max_x) * self.cell_size
+        y = randint(0, max_y) * self.cell_size
         self.position = (x, y)
 
     def draw(self, surface):
@@ -116,7 +115,7 @@ class Snake(GameObject):
             # либо храним предыдущую позицию хвоста.
             pass
 
-            # Отрисовываем все сегменты
+        # Отрисовываем все сегменты
         for position in self.positions:
             rect = pygame.Rect(position, (self.cell_size, self.cell_size))
             pygame.draw.rect(surface, self.body_color, rect)
@@ -127,8 +126,12 @@ class Snake(GameObject):
 
     def reset(self):
         """Сбрасывает змейку в начальное состояние."""
-        start_x = (self.screen_width // 2) // self.cell_size * self.cell_size
-        start_y = (self.screen_height // 2) // self.cell_size * self.cell_size
+        start_x = (
+            (self.screen_width // 2) // self.cell_size * self.cell_size
+        )
+        start_y = (
+            (self.screen_height // 2) // self.cell_size * self.cell_size
+        )
         self.positions = [(start_x, start_y)]
         self.length = 1
         self.direction = (self.cell_size, 0)
@@ -206,9 +209,6 @@ def main():
         pygame.display.update()
         clock.tick(20)
 
-
-if __name__ == '__main__':
-    main()
 
 if __name__ == '__main__':
     main()
